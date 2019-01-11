@@ -22,10 +22,10 @@ while(True):
   if( cv2.waitKey(1) & 0xFF == ord('q') ): 
     break 
 
-for x in range(100):
+for i in range(100):
   ret, frame = cap.read() 
   cv2.imshow('frame', frame)
-  cv2.imwrite('15fps/test%02d.jpg'%x,frame)
+  cv2.imwrite('15fps/test%02d.jpg'%i,frame)
 
 cap.release() 
 cv2.destroyAllWindows()
