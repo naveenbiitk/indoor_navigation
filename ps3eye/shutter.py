@@ -1,9 +1,10 @@
 import cv2 
 import subprocess
+import time
 
 # open the capture
 cap = cv2.VideoCapture(2) 
-
+i=0
 # set the exposure after opening the capture to
 # avoid opencv modifying settings
 #cap.set(cv2.CV_CAP_PROP_FPS, 15)
@@ -15,17 +16,25 @@ output2 = subprocess.call(menu, shell=True)
 output3 = subprocess.call(exposure, shell=True)
 
 # watch your changes!
-while(True): 
-  ret, frame = cap.read() 
-  cv2.imshow('frame', frame)
+while (True):
+	if(int(time.time())==1547355802): 
+		while(True):
+			ret, frame = cap.read() 
+        	cv2.imshow('frame', frame)
+        	cv2.imwrite('15fps/test%02d.jpg'%i,frame)
+        	i=i+1;
+			#cv2.imshow("image", img);
+			if(i=100)
+				exit();
+				break;
+			if(cv2.waitKey(1) & 0xFF == ord('q') ): 
+				cv2.destroyAllWindows()
+				exit();
 
-  if( cv2.waitKey(1) & 0xFF == ord('q') ): 
-    break 
+    
+if(cv2.waitKey(0) & 0xFF == ord('q') ): 
+	cv2.destroyAllWindows()
 
-for i in range(100):
-  ret, frame = cap.read() 
-  cv2.imshow('frame', frame)
-  cv2.imwrite('15fps/test%02d.jpg'%i,frame)
 
 cap.release() 
 cv2.destroyAllWindows()
